@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Create Customer</title>
+    <meta charset="UTF-8">
+    <th:block th:replace="/layout/head"/>
+</head>
+<body>
+<div class="container-scroller">
+    <th:block th:replace="/layout/navbar"/>
+    <div class="container-fluid page-body-wrapper">
+        <th:block th:replace="/layout/sidebar"/>
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                        <form th:action="@{/customers/save}" th:object="${customer}" method="post" novalidate="novalidate">
+                            <input type="hidden" th:field="*{id}">
+                            <div class="row mt-2">
+                                <label class="col-2" for="fullName">Full Name</label>
+                                <div class="col-9">
+                                    <input type="text" name="fullName" id="fullName" class="form-control" th:field="*{fullname}">
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="col-2" for="email">Email</label>
+                                <div class="col-9">
+                                    <input type="text" name="email" id="email" class="form-control" th:field="*{email}">
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="col-2" for="phone">Phone</label>
+                                <div class="col-9">
+                                    <input type="text" name="phone" id="phone" class="form-control" th:field="*{phone}">
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="col-2" for="address">Address</label>
+                                <div class="col-9">
+                                    <input type="text" name="address" id="address" class="form-control" th:field="*{address}">
+                                </div>
+                            </div>
+                            <div class="row mt-2 d-flex justify-content-center">
+                                <div class="col-2">
+                                    <button type="submit" value="save" class="btn btn-primary">Create</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <th:block th:replace="/layout/footer"/>
+        </div>
+    </div>
+</div>
+</body>
+<th:block th:replace="/layout/script"/>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>List of customers</title>
+    <meta charset="UTF-8">
+    <th:block th:replace="/layout/head"/>
+</head>
+<body>
+<div class="container-scroller">
+    <th:block th:replace="/layout/navbar"/>
+    <div class="container-fluid page-body-wrapper">
+        <th:block th:replace="/layout/sidebar"/>
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                        <div class="row">
+                            <div class="col-12 mb-4 mb-xl-0">
+                                <h3 class="font-weight-bold text-center">List of Customer</h3>
+                                <div class=" d-flex justify-content-start align-items-center ">
+                                    <a href="/customers/create">
+                                        <button type="submit" class="btn btn-primary mr-1">Add Customer</button>
+                                    </a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="customers">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Address</th>
+                                            <th colspan="2">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="row,rowStat : ${customers}">
+                                            <td th:text="${row.getFullname()}"></td>
+                                            <td th:text="${row.getEmail()}"></td>
+                                            <td th:text="${row.getPhone()}"></td>
+                                            <td th:text="${row.getAddress()}"></td>
+                                            <td>
+                                                <a href="#">
+                                                    <button class="btn btn-outline-success">Edit</button>
+                                                </a>
+                                                <a href="">
+                                                    <button class="btn btn-outline-danger">Delete</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <th:block th:replace="/layout/footer"/>
+        </div>
+    </div>
+</div>
+</body>
+<th:block th:replace="/layout/script"/>
+</html>
